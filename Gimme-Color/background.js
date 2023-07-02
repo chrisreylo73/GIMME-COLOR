@@ -1,6 +1,5 @@
    chrome.action.onClicked.addListener(function(){
-      console.log('yo') 
-      // Make cursor a color picker
-      // on click save hex pixel color to clipboardS
-      // set everything off
+      chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+         chrome.tabs.sendMessage(tabs[0].id, { message: 'Hello from background!' });
+      });
    });
