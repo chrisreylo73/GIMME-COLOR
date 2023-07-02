@@ -1,2 +1,2 @@
-# Gimmie-Color
+# Gimme-Color
 Color Picker Chrome Extension
