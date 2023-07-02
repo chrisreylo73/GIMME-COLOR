@@ -5,7 +5,7 @@
    "author": "chrisreylo",
    "description": "Simple fast color-picker that saves any color from your webpage",
    "action": {
-      "default_icon": "icons/GOLOGO.png"
+      "default_icon": "icons/G.png"
    },
    "content_scripts": [{
       "matches": ["<all_urls>"],
