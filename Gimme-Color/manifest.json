@@ -1,22 +1,21 @@
 {
-   "name": "Gimme Color",
-   "version": "1.0",
-   "manifest_version": 3,
-   "author": "chrisreylo",
-   "description": "Simple fast color-picker that saves any color from your webpage",
-   "action": {
-      "default_icon": "icons/G.png"
-   },
-   "content_scripts": [{
-      "matches": ["<all_urls>"],
-      "js": ["content.js"],
-      "run_at": "document_end"
-  }],
-  "permissions": [
-   "activeTab",
-   "storage"
-  ],
-  "background": {
-   "service_worker": "background.js"   
-  }
- }
+	"name": "Gimme Color",
+	"version": "1.0",
+	"manifest_version": 3,
+	"author": "chrisreylo",
+	"description": "Simple fast color-picker that saves any color from your webpage",
+	"action": {
+		"default_icon": "icons/logo.png"
+	},
+	"content_scripts": [
+		{
+			"matches": ["<all_urls>"],
+			"js": ["content.js"],
+			"run_at": "document_end"
+		}
+	],
+	"permissions": ["activeTab", "storage"],
+	"background": {
+		"service_worker": "background.js"
+	}
+}

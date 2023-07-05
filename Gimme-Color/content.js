@@ -1,11 +1,46 @@
 //overlay to prevent clicking action
+const css = document.createElement("style");
+css.innerHTML = `
+   .overlay{
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+   }
+
+   .feedback {
+      top: 0;
+      right: 0;
+      position: absolute;
+		z-index: 9999999;
+      display: flex;
+		justify-content: center;
+		align-items: center;
+      background-color: #272c42;
+      color: white;
+		border-radius: 8px;
+		padding: 2px;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.9);
+      height: 30px;
+      width: 180px;
+      text-align: center;
+      margin: 20px auto;
+    }
+    
+`;
+// creates the ccm element
+document.head.appendChild(css);
+
+// Creates Overlay
 const overlay = document.createElement("div");
-overlay.style.position = "fixed";
-overlay.style.top = "0";
-overlay.style.left = "0";
-overlay.style.width = "100%";
-overlay.style.height = "100%";
-overlay.style.zIndex = "9999";
+overlay.className = "overlay";
+
+// const feedback = document.createElement("div");
+// feedback.className = "feedback";
+// feedback.textContent = `: Added to Clipboard`;
+// document.body.appendChild(feedback);
 
 // Listens for messages from background
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
@@ -21,12 +56,10 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 	}
 });
 
-function clickHandler(event) {
+function clickHandler(clientX, clientY) {
 	console.log("Click event!");
 	document.body.style.cursor = "default";
-	const x = event.clientX;
-	const y = event.clientY;
-	getPixelColor(x, y);
+	getPixelColor(clientX, clientY);
 	document.body.removeChild(overlay);
 	document.removeEventListener("click", clickHandler);
 }
