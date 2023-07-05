@@ -46,16 +46,15 @@ function getPixelColor(x, y) {
 				let xScale = img.width / window.innerWidth;
 				let yScale = img.height / window.innerHeight;
 				context.drawImage(img, 0, 0);
-				x = (x - window.pageXOffset) * xScale;
-				y = (y - window.pageYOffset) * yScale;
-
+				x = x * xScale;
+				y = y * yScale;
 				const pixelData = context.getImageData(x, y, 1, 1).data;
 				const rgbaColor = `rgba(${pixelData[0]}, ${pixelData[1]}, ${pixelData[2]}, ${pixelData[3]})`;
 				const hexColor = getHexValue(rgbaColor);
 				console.log(rgbaColor);
 				console.log(hexColor);
 				saveToClipboard(hexColor);
-				// updateExtensionIcon(hexColor);
+				chrome.runtime.sendMessage({ message: "updateBadge", color: hexColor });
 			} catch (error) {
 				console.log(error, "error occurred!");
 			}

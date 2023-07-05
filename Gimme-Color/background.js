@@ -1,6 +1,7 @@
 chrome.action.onClicked.addListener(function () {
 	chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
 		chrome.tabs.sendMessage(tabs[0].id, { message: "iconClicked" });
+		chrome.action.setBadgeText({ text: "  " }); // Set the badge text
 	});
 });
 
@@ -11,7 +12,11 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 				console.log(dataUrl);
 				sendResponse({ screenshot: dataUrl });
 			});
-			return true; // Ensure that sendResponse() is called asynchronously
+			return true;
+		case "updateBadge":
+			console.log(request.color);
+			chrome.action.setBadgeBackgroundColor({ color: request.color });
+			break;
 		default:
 			break;
 	}
