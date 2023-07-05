@@ -56,10 +56,12 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 	}
 });
 
-function clickHandler(clientX, clientY) {
+function clickHandler(event) {
 	console.log("Click event!");
 	document.body.style.cursor = "default";
-	getPixelColor(clientX, clientY);
+	const x = event.clientX;
+	const y = event.clientY;
+	getPixelColor(x, y);
 	document.body.removeChild(overlay);
 	document.removeEventListener("click", clickHandler);
 }
