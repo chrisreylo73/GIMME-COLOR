@@ -1,7 +1,7 @@
 //overlay to prevent clicking action
 const css = document.createElement("style");
 css.innerHTML = `
-   .overlay{
+   .overlay-gc {
       position: fixed;
       top: 0;
       left: 0;
@@ -10,7 +10,7 @@ css.innerHTML = `
       z-index: 9999;
    }
 
-   .feedback {
+   .feedback-gc {
       top: 0;
       right: 0;
       position: absolute;
@@ -35,7 +35,7 @@ document.head.appendChild(css);
 
 // Creates Overlay
 const overlay = document.createElement("div");
-overlay.className = "overlay";
+overlay.className = "overlay-gc";
 
 // const feedback = document.createElement("div");
 // feedback.className = "feedback";
