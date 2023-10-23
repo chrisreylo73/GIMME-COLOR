@@ -23,7 +23,7 @@ css.innerHTML = `
 		border-radius: 8px;
 		padding: 2px;
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.9);
-      height: 30px;
+      height: 60px;
       width: 180px;
       text-align: center;
       margin: 20px auto;
@@ -37,10 +37,8 @@ document.head.appendChild(css);
 const overlay = document.createElement("div");
 overlay.className = "overlay-gc";
 
-// const feedback = document.createElement("div");
-// feedback.className = "feedback";
-// feedback.textContent = `: Added to Clipboard`;
-// document.body.appendChild(feedback);
+const feedback = document.createElement("div");
+feedback.className = "feedback-gc";
 
 // Listens for messages from background
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
@@ -89,6 +87,7 @@ function getPixelColor(x, y) {
 				console.log(rgbaColor);
 				console.log(hexColor);
 				saveToClipboard(hexColor);
+				getFeedback(hexColor);
 				chrome.runtime.sendMessage({ message: "updateBadge", color: hexColor });
 			} catch (error) {
 				console.log(error, "error occurred!");
@@ -112,4 +111,12 @@ function getHexValue(rgbaColor) {
 
 function saveToClipboard(text) {
 	navigator.clipboard.writeText(text);
+}
+
+function getFeedback(color) {
+	feedback.textContent = `  "${color}" Added to Clipboard`;
+	document.body.appendChild(feedback);
+	setTimeout(function () {
+		document.body.removeChild(feedback);
+	}, 2000);
 }
