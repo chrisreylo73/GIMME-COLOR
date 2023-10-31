@@ -1,11 +1,17 @@
-# Gimme-Color
+<summary> Gimme Color </summary>
+<pre>
+    
+![Untitled-removebg-preview](https://github.com/chrisreylo73/chrisreylo73/assets/72224622/4135591e-9282-48b9-82ec-a4ec8e595dba)
 
-### Description
+#   `DESCRIPTION`
+`     Chrome extension that allows users to quickly extract and copy hex color values from any webpage.`
+#   `DEMO`
+<img src="https://github.com/chrisreylo73/chrisreylo73/assets/72224622/a006063d-481a-4fb5-a54c-f1c736e6f97e" width="600" height="450" alt="CODE_SWEEP_1_DEMO">
 
-Chrome extension that allows users to quickly copy hex color values from any webpage to your clipboard.
+#   `TECH STACK`
+- JavaScript
+- HTML & CSS
+#   `LINKS`
+- [Link to Repository](https://github.com/chrisreylo73/Gimme-Color)
 
-### Process
-
-1. Click the extension icon.
-2. Choose and click on a color on your webpage.
-3. Now the hex value of that color is saved to your clipboard! Enjoy!
+</pre>
